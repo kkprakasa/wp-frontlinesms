@@ -11,3 +11,9 @@ wp-frontlinesms is a wordpress plugin to retrieve message from frontlinesms (htt
 
 About the code :
 it will parsing variables from query inserted then adding to the database wp-frontlinesms created
+
+future :
+admin panel
+backup message
+google maps connect and geotagging
+
