@@ -4,9 +4,9 @@
  * Plugin Name: WP-FrontlineSMS
  * Plugin URI: pr4ka5a.wordpress.com
  * Description: Plugin for fetch messages from Frontline SMS
- * Author:
- * Version:
- * Author URI:
+ * Author: Kaka E. Prakasa
+ * Version: 0.1
+ * Author URI: https://github.com/pr4ka5a/wp-frontlinesms/
  */
 ?>
 <?
