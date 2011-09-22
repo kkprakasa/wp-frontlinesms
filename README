@@ -1,0 +1,13 @@
+wp-frontlinesms
+
+Author: Kaka E. Prakasa
+Email : Kaka.prakasa@gmail.com
+blog : pr4ka5a.wordpress.com
+
+license : GPLv2
+
+About-Plugin :
+wp-frontlinesms is a wordpress plugin to retrieve message from frontlinesms (http://www.frontlinesms.com)
+
+About the code :
+it will parsing variables from query inserted then adding to the database wp-frontlinesms created
