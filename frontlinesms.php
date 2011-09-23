@@ -17,7 +17,7 @@ function frontlinesms_install()
     $structure = "CREATE TABLE $table (
         id INT(9) NOT NULL AUTO_INCREMENT,
         FRONTLINE_key VARCHAR(8),
-        sender_number INT(15) NOT NULL,
+        sender_number VARCHAR(15) NOT NULL,
         message_content VARCHAR(800),
         dt datetime NOT NULL default '0000-00-00',
         UNIQUE KEY id (id)
@@ -103,7 +103,7 @@ function frontline_post($args)
 
                         if($k == $frontlinesms_key)
                         {
-                            $send = "INSERT INTO $table( FRONTLINE_key, sender_number, message_content, dt) VALUES( %s, %d, %s, NOW())";
+                            $send = "INSERT INTO $table( FRONTLINE_key, sender_number, message_content, dt) VALUES( %s, %S, %s, NOW())";
                             $wpdb->query($wpdb->prepare($send, $k, $s, $m));
                             $wpdb->show_errors();
                         }
