@@ -68,8 +68,8 @@ class FrontlineSMS_widget {
                 echo $args['after_widget'];
                       }
         function register(){
-                register_sidebar_widget('Widget name', array('FrontlineSMS_widget', 'widget'));
-                register_widget_control('Widget name', array('FrontlineSMS_widget', 'control'));
+                register_sidebar_widget('FrontlineSMS Widget', array('FrontlineSMS_widget', 'widget'));
+                register_widget_control('FrontlineSMS Widget', array('FrontlineSMS_widget', 'control'));
                   }
 }
 
