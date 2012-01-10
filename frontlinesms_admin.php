@@ -31,10 +31,11 @@ function check_frontlinesms_key()
     return;
 
 }
-echo "Keyword :" . check_frontlinesms_key();
+echo "Keyword : ";
+echo check_frontlinesms_key();
 ?>
 <br />
 <?
-echo "Link : " . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?s={$Sender Number}&m={$Message content}&k=keyword";
+echo "Link : " . $_SERVER['HTTP_HOST'] . "index.php?s={\$Sender Number}&m={\$Message content}&k=Keyword <br />";
 echo "Just fill the link above to the frontlineSMS external command Http Request";
 ?>
