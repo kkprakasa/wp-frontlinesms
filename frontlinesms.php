@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/pr4ka5a/wp-frontlinesms/
  * Description: Plugin for fetch messages from Frontline SMS
  * Author: Kaka E. Prakasa
- * Version: 0.1
+ * Version: 0.2
  * Author URI: http://pr4ka5a.wordpress.com
  */
 ?>
@@ -63,7 +63,7 @@ class FrontlineSMS_widget {
                 }
         function widget($args){
                 echo $args['before_widget'];
-                echo $args['before_title'] . 'Your widget title' . $args['after_title'];
+                echo $args['before_title'] . 'SMS Message' . $args['after_title'];
                 echo ambil();
                 echo $args['after_widget'];
                       }
@@ -83,12 +83,12 @@ function frontline_post($args)
             global $wpdb;
             $table = $wpdb->prefix."frontlinesms";
             $default = array (
-                's' => '',
-                'm' => '',
-                'k' => '',
+                'ss' => '',
+                'mm' => '',
+                'kk' => '',
                 'lewat' => TRUE
                 );
-                $dt = date("Y-m-d h:i:s");
+                $dt = date("Y-m-d H:i:s");
 
                 //Melewatkan argumen yang datang dan memasukkannya dalam $default
                 $args = wp_parse_args( $args, $default);
@@ -97,17 +97,19 @@ function frontline_post($args)
                 extract( $args, EXTR_SKIP);
                 $frontlinesms_key = $wpdb->get_var($wpdb->prepare("SELECT FRONTLINE_key FROM $table"));
 
-                if(!empty($s) AND !empty($m) AND !empty($k))
+                if(!empty($ss) AND !empty($mm) AND !empty($kk))
                 {
 
 
-                        if($k == $frontlinesms_key)
-                        {
-                            $send = "INSERT INTO $table( FRONTLINE_key, sender_number, message_content, dt) VALUES( %s, %S, %s, NOW())";
-                            $wpdb->query($wpdb->prepare($send, $k, $s, $m));
-                            $wpdb->show_errors();
-                        }
-
+                       if($kk == $frontlinesms_key){
+               
+			    $wpdb->insert($table, array('FRONTLINE_key' => $kk,
+							'sender_number' => $ss,
+  						        'message_content' => $mm,
+						        'dt' => $dt ));
+																								     	    $wpdb->show_errors();
+																						 	 }
+                        
 
                 }
     }
@@ -116,3 +118,4 @@ function frontline_post($args)
 
 frontline_post($_SERVER['QUERY_STRING'])
 ?>
+ 
