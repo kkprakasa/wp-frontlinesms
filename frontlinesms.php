@@ -83,39 +83,33 @@ function frontline_post($args)
             global $wpdb;
             $table = $wpdb->prefix."frontlinesms";
             $default = array (
-                'ss' => '',
-                'mm' => '',
-                'kk' => '',
+                's' => '',
+                'm' => '',
+                'k' => '',
                 'lewat' => TRUE
                 );
-                $dt = date("Y-m-d H:i:s");
+            $dt = date("Y-m-d H:i:s");
 
-                //Melewatkan argumen yang datang dan memasukkannya dalam $default
-                $args = wp_parse_args( $args, $default);
+            //Melewatkan argumen yang datang dan memasukkannya dalam $default
+            $args = wp_parse_args( $args, $default);
 
-                //Mendeklarasikan setiap item pada $args menjadi variabel
-                extract( $args, EXTR_SKIP);
-                $frontlinesms_key = $wpdb->get_var($wpdb->prepare("SELECT FRONTLINE_key FROM $table"));
+            //Mendeklarasikan setiap item pada $args menjadi variabel
+            extract( $args, EXTR_SKIP);
+            $frontlinesms_key = $wpdb->get_var($wpdb->prepare("SELECT FRONTLINE_key FROM $table"));
 
-                if(!empty($ss) AND !empty($mm) AND !empty($kk))
+            if(!empty($s) AND !empty($m) AND !empty($k))
+            {
+                if($k == $frontlinesms_key)
                 {
-
-
-                       if($kk == $frontlinesms_key){
-               
-			    $wpdb->insert($table, array('FRONTLINE_key' => $kk,
-							'sender_number' => $ss,
-  						        'message_content' => $mm,
-						        'dt' => $dt ));
-																								     	    $wpdb->show_errors();
-																						 	 }
-                        
-
+                    $wpdb->insert($table, array('FRONTLINE_key' => $k,
+                    'sender_number' => $s,
+                    'message_content' => $m,
+                    'dt' => $dt ));
+                    $wpdb->show_errors();
                 }
+            }
     }
-
 }
 
 frontline_post($_SERVER['QUERY_STRING'])
 ?>
- 
