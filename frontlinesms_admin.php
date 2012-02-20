@@ -20,19 +20,18 @@ function check_frontlinesms_key()
         $frontlinesms_key = generateRandomString(8);
         $send = "INSERT INTO $table(FRONTLINE_key) VALUES('$frontlinesms_key')";
         $wpdb->query($send);
-        echo $frontlinesms_key;
+        return $frontlinesms_key;
     }else{
 
-        echo $frontlinesms_key;
+        return $frontlinesms_key;
     }
-    return;
 
 }
 
 ?>
 <br />
 <?
-echo "<b> http://" . $_SERVER['HTTP_HOST'] . "/index.php?ss=\${sender_number}&mm=\${message_content}&kk= </b>";
+echo "<b> http://" . $_SERVER['HTTP_HOST'] . "/index.php?ss=\${sender_number}&mm=\${message_content}&kk=</b>";
 echo "<b>" . check_frontlinesms_key() . "</b><br />";
 echo "Just fill the link above to the frontlineSMS external command Http Request";
 ?>
